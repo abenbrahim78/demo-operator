@@ -1,0 +1,12 @@
+apiVersion: middleware.ibm.demo.com/v1
+kind: RestApi
+metadata:
+  labels:
+    app.kubernetes.io/name: restapi
+    app.kubernetes.io/instance: restapi-sample
+    app.kubernetes.io/part-of: demo-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: demo-operator
+  name: restapi-sample
+spec:
+  size: 2
