@@ -1,3 +1,4 @@
 ---
 # defaults file for RestApi
 size: 4
+namespace_target: restapi-test2

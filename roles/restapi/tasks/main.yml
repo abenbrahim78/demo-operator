@@ -2,7 +2,7 @@
 
 - name: Create a k8s namespace
   kubernetes.core.k8s:
-    name: testing
+    name: "{{ namespace_target }}"
     api_version: v1
     kind: Namespace
     state: present
@@ -14,7 +14,7 @@
       apiVersion: apps/v1
       metadata:
         name: "{{ ansible_operator_meta.name }}-helloworld"
-        namespace: testing
+        namespace: "{{ namespace_target }}"
       spec:
         replicas: "{{ size }}"
         selector:
@@ -28,6 +28,7 @@
             containers:
               - name: helloworld
                 image: "nginx"
+
 - name: Create frontend service
   kubernetes.core.k8s:
     definition:
@@ -35,7 +36,7 @@
       apiVersion: v1
       metadata:
         name: frontend-service
-        namespace: testing
+        namespace: "{{ namespace_target }}"
         labels:
           app: frontend
       spec:
